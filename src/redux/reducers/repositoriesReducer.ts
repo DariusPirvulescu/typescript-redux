@@ -1,38 +1,10 @@
+import { Action } from "../actions";
+
 interface RepositoryState {
   loading: boolean;
   error: string | null;
   data: string[];
 }
-
-// interface Action {
-//   type: string;
-//   payload?: any; // the 'any' type annotation can be improved
-// }
-
-interface SearchRepositories {
-  type: ActionType.SEARCH_REPOSITORIES;
-}
-
-interface SearchRepositoriesSuccessAction {
-  type: ActionType.SEARCH_REPOSITORIES_SUCCESS;
-  payload: string[];
-}
-
-interface SearchRepositoriesErrorAction {
-  type: ActionType.SEARCH_REPOSITORIES_ERROR;
-  payload: string;
-}
-
-enum ActionType {
-    SEARCH_REPOSITORIES='search_repositories',
-    SEARCH_REPOSITORIES_SUCCESS='search_repositories_success',
-    SEARCH_REPOSITORIES_ERROR='search_repositories_error'
-}
-
-type Action =
-  | SearchRepositories
-  | SearchRepositoriesSuccessAction
-  | SearchRepositoriesErrorAction;
 
 const repositoriesReducer = (
   state: RepositoryState,
