@@ -11,10 +11,9 @@ const repositoriesReducer = (
   state: RepositoryState,
   action: Action
 ): RepositoryState => {
-
   /** Type Guard */
   if (action.type === "search_repositories_success") {
-    console.log(action) // if you check the action's type it will show SearchRepositoriesSuccessAction
+    console.log(action); // if you check the action's type it will show SearchRepositoriesSuccessAction
   }
   /************* */
   switch (action.type) {
