@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux'; // same as mapStateToProps for class components
+// import { useSelector } from 'react-redux'; // same as mapStateToProps for class components
 
+import { useTypedSelector } from "../custom-hooks/useTypedSelector"; // useSelector, but annotated
 import { useActions } from '../custom-hooks/useActions';
 
 const Repositories: React.FC = () => {
   const [term, setTerm] = useState('');
   const { searchRepositories } = useActions()
-  const state = useSelector((state: any) => state.repositories)
+  const state = useTypedSelector((state) => state.repositories)
   // { loading, error, data }
 
   console.log(state);
