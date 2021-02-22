@@ -7,10 +7,7 @@ import { useActions } from '../custom-hooks/useActions';
 const Repositories: React.FC = () => {
   const [term, setTerm] = useState('');
   const { searchRepositories } = useActions()
-  const state = useTypedSelector((state) => state.repositories)
-  // { loading, error, data }
-
-  console.log(state);
+  const { loading, error, data } = useTypedSelector((state) => state.repositories)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -27,6 +24,18 @@ const Repositories: React.FC = () => {
       <input value={term} onChange={handleInputChange} />
       <button type='submit'>Search</button>
     </form>
+    {loading && <div>Loading...</div>}
+    {error && <div>{error}</div>}
+    {!loading && !error && 
+     <ul>
+        {
+          data.map(result => (
+            <li key={result}>
+              {result}
+           </li>))
+        }
+     </ul>
+    }
   </div>
 };
 
